@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D6D55CC216AEDF800DC3C8C /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D6D55CB216AEDF700DC3C8C /* images.xcassets */; };
 		5D883DC22158495A005140A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D883DC12158495A005140A8 /* AppDelegate.swift */; };
 		5D883DC42158495A005140A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D883DC32158495A005140A8 /* ViewController.swift */; };
 		5D883DC72158495A005140A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D883DC52158495A005140A8 /* Main.storyboard */; };
@@ -18,7 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D6D55CB216AEDF700DC3C8C /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		5D883DBE21584959005140A8 /* Weather wear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather wear.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D883DC12158495A005140A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D883DC32158495A005140A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +46,6 @@
 		5D883DB521584959005140A8 = {
 			isa = PBXGroup;
 			children = (
-				5D6D55CB216AEDF700DC3C8C /* images.xcassets */,
 				5D883DC021584959005140A8 /* Weather wear */,
 				5D883DBF21584959005140A8 /* Products */,
 				5D883DD3215B0D03005140A8 /* Frameworks */,
@@ -161,7 +158,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D883DCC2158495C005140A8 /* LaunchScreen.storyboard in Resources */,
-				5D6D55CC216AEDF800DC3C8C /* images.xcassets in Resources */,
 				5D883DC92158495C005140A8 /* Assets.xcassets in Resources */,
 				5D883DC72158495A005140A8 /* Main.storyboard in Resources */,
 			);
