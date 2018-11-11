@@ -12,7 +12,19 @@ import WXKDarkSky
 
 class ViewController: UIViewController, CLLocationManagerDelegate{
     
+    @IBOutlet weak var weatherIcon: UIImageView?
+    
+    @IBOutlet weak var temperatureLabel: UILabel?
+    
+    @IBOutlet weak var dateLabel: UILabel?
+    
+    @IBOutlet weak var clothingLabel: UILabel?
+
     let locationManager = CLLocationManager()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +44,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         
     }
     
-    func celsius(fahrenheit: Float) -> Float {
-        return (fahrenheit - 32.0) * (5/9)
+    func celsius(fahrenheit: Double) -> Double {
+        return floor((fahrenheit - 32.0) * (5/9))
     }
     
     func kph(mph: Float) -> Float {
@@ -54,8 +66,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                     // Handle errors here...
                 } else if let data = data {
                     // Handle the received data here...
-                    print ("Weather icon is \(data.currently?.icon)")
-                    print ("Current temperature is \(data.currently?.temperature)")
+                    
+                    DispatchQueue.main.async {
+                        
+                        print ("Weather icon is \(data.currently?.icon)")
+                        print ("Current temperature is \(data.currently?.temperature)")
+                        
+                        self.temperatureLabel?.text = "\(self.celsius(fahrenheit: (data.currently!.temperature)!)) C"
+                        
+                        let iconImagenames = [
+                            "clear-day" : "sun",
+                            "clear-night" : "moon",
+                            "rain" : "cloud-rain",
+                            "snow" : "cloud-snow",
+                            "sleet" : "cloud-drizzle",
+                            "wind" : "wind",
+                            "fog" : "cloud-fog",
+                            "cloudy" : "cloud",
+                            "partly-cloudy-day" : "cloud-sun",
+                            "partly-cloudy-night" : "cloud-moon",
+                            "hail" : "cloud-hail",
+                            "thunderstorm" : "cloud-lightning",
+                            "tornado" : "tornado"
+                        ]
+                        
+                        var curWeatherIcon = iconImagenames[(data.currently?.icon)!]
+                        if (curWeatherIcon!.isEmpty) {
+                            curWeatherIcon = "cloud-download"
+                        }
+                        self.weatherIcon?.image = UIImage(named: curWeatherIcon!)
+                        
+                        let date = NSDate()
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
+                        self.dateLabel?.text = dateFormatter.string(from: date as Date)
+                    }
+
                 }
             }
         }
