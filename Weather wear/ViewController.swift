@@ -10,8 +10,8 @@ import UIKit
 import CoreLocation
 import WXKDarkSky
 
-class ViewController: UIViewController, CLLocationManagerDelegate{
-    
+class ViewController: UIViewController, CLLocationManagerDelegate {
+  
     @IBOutlet weak var weatherIcon: UIImageView?
     
     @IBOutlet weak var temperatureLabel: UILabel?
@@ -39,9 +39,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         if CLLocationManager.locationServicesEnabled(){
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
+//            locationManager.startUpdatingLocation()
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
+        }
     }
     
     func celsius(fahrenheit: Double) -> Double {
@@ -74,7 +80,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                         
                         self.temperatureLabel?.text = "\(self.celsius(fahrenheit: (data.currently!.temperature)!)) C"
                         
-                        let iconImagenames = [
+                        let iconImageNames = [
                             "clear-day" : "sun",
                             "clear-night" : "moon",
                             "rain" : "cloud-rain",
@@ -88,9 +94,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                             "hail" : "cloud-hail",
                             "thunderstorm" : "cloud-lightning",
                             "tornado" : "tornado"
-                        ]
+                         ]
                         
-                        var curWeatherIcon = iconImagenames[(data.currently?.icon)!]
+                        let clothingLabelNames = [
+                            "clear-day" : "sun gear",
+                            "clear-night" : "jacket or sweater",
+                            "rain" : " rain gear",
+                            "snow" : "snow gear",
+                            "sleet" : "jacket, hat, gloves",
+                            "wind" : "wind breaker",
+                            "fog" : "jacket or sweater",
+                            "cloudy" : "jacket or sweater",
+                            "partly-cloudy-day" : "jacket or sweater",
+                            "partly-cloudy-night" : "jacket or sweater",
+                            "hail" : "rain gear",
+                            "thunderstorm" : "raincoat, rainboots",
+                            "tornado" : "jacket, hat, sweater",
+                         ]
+                        
+                        var curClothingLabel = clothingLabelNames[(data.currently?.icon)!]
+                        if ((curClothingLabel == nil) || (curClothingLabel?.isEmpty)!)   {
+                          curClothingLabel = "No suggestions to wear"
+                        }
+                        self.clothingLabel?.text = curClothingLabel
+                        
+                        var curWeatherIcon = iconImageNames[(data.currently?.icon)!]
                         if (curWeatherIcon!.isEmpty) {
                             curWeatherIcon = "cloud-download"
                         }
@@ -100,6 +128,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
                         self.dateLabel?.text = dateFormatter.string(from: date as Date)
+                        
+                        self.temperatureLabel?.textAlignment = .center
+                        self.dateLabel?.textAlignment = .center
+                        self.clothingLabel?.textAlignment = .center
+                      
                     }
 
                 }
@@ -123,13 +156,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 //        }
 //        
 //    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        //Dispose of any resources that can be recreated.
-    }
-    
-    }
+
+}
 
 
 
