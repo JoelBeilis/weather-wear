@@ -20,7 +20,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var clothingLabel: UILabel?
 
-    let locationManager = CLLocationManager()
+    static let locationManager = CLLocationManager()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -31,22 +31,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
     
         // For use when the app is open & in the background
-        locationManager.requestAlwaysAuthorization()
+        ViewController.locationManager.requestAlwaysAuthorization()
         
         // For use when the app is open
-        locationManager.requestWhenInUseAuthorization()
+        ViewController.locationManager.requestWhenInUseAuthorization()
         
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if CLLocationManager.locationServicesEnabled() {
+            ViewController.locationManager.delegate = self
+            ViewController.locationManager.desiredAccuracy = kCLLocationAccuracyBest
 //            locationManager.startUpdatingLocation()
         }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.startUpdatingLocation()
+        // ViewController.refresh()
+    }
+    
+    static func refresh() {
+        if CLLocationManager.locationServicesEnabled() {
+            ViewController.locationManager.startUpdatingLocation()
         }
     }
     
@@ -62,7 +66,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if let location = locations.first {
             print(location.coordinate)
             
-            locationManager.stopUpdatingLocation()
+            ViewController.locationManager.stopUpdatingLocation()
             
             let request = WXKDarkSkyRequest(key: "cf0cf207553849cd5fa3a58e88d4d17e")
             let point = WXKDarkSkyRequest.Point(location.coordinate.latitude, location.coordinate.longitude)
