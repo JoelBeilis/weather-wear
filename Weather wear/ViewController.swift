@@ -28,6 +28,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
         "tornado" : "tornado"
     ]
     
+    let iconImageLabels = [
+        "clear-day" : "Clear Day",
+        "clear-night" : "Clear Night",
+        "rain" : "Rainy",
+        "snow" : "Snowing",
+        "sleet" : "Drizzle",
+        "wind" : "Windy",
+        "fog" : "Foggy",
+        "cloudy" : "Cloudy",
+        "partly-cloudy-day" : "Cloudy Day",
+        "partly-cloudy-night" : "Cloudy Night",
+        "hail" : "Hail",
+        "thunderstorm" : "Thunderstorm",
+        "tornado" : "Tornado"
+    ]
+    
     let clothingLabelNames = [
         "clear-day" : "sun gear",
         "clear-night" : "jacket or sweater",
@@ -47,6 +63,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
     var darkSkyData : WXKDarkSkyResponse?
   
     @IBOutlet weak var hourlyWeatherCollection: UICollectionView?
+    
+    @IBOutlet weak var iconNameLabel: UILabel?
     
     @IBOutlet weak var weatherIcon: UIImageView?
     
@@ -135,11 +153,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
         }
         self.clothingLabel?.text = curClothingLabel
         
-        var curWeatherIcon = self.iconImageNames[(self.darkSkyData?.currently?.icon)!]
-        if (curWeatherIcon!.isEmpty) {
-            curWeatherIcon = "cloud-download"
-        }
+        let curWeatherIcon = self.iconImageNames[(self.darkSkyData?.currently?.icon) ?? "cloud-download"]
         self.weatherIcon?.image = UIImage(named: curWeatherIcon!)
+        
+        self.iconNameLabel?.text = self.iconImageLabels[(self.darkSkyData?.currently?.icon) ?? "clear-day"]
         
         let date = NSDate()
         let dateFormatter = DateFormatter()
