@@ -11,6 +11,40 @@ import CoreLocation
 import WXKDarkSky
 
 class ViewController: UIViewController, CLLocationManagerDelegate,  UICollectionViewDataSource  {
+    
+    let iconImageNames = [
+        "clear-day" : "sun",
+        "clear-night" : "moon",
+        "rain" : "cloud-rain",
+        "snow" : "cloud-snow",
+        "sleet" : "cloud-drizzle",
+        "wind" : "wind",
+        "fog" : "cloud-fog",
+        "cloudy" : "cloud",
+        "partly-cloudy-day" : "cloud-sun",
+        "partly-cloudy-night" : "cloud-moon",
+        "hail" : "cloud-hail",
+        "thunderstorm" : "cloud-lightning",
+        "tornado" : "tornado"
+    ]
+    
+    let clothingLabelNames = [
+        "clear-day" : "sun gear",
+        "clear-night" : "jacket or sweater",
+        "rain" : " rain gear",
+        "snow" : "snow gear",
+        "sleet" : "jacket, hat, gloves",
+        "wind" : "wind breaker",
+        "fog" : "jacket or sweater",
+        "cloudy" : "jacket or sweater",
+        "partly-cloudy-day" : "jacket or sweater",
+        "partly-cloudy-night" : "jacket or sweater",
+        "hail" : "rain gear",
+        "thunderstorm" : "raincoat, rainboots",
+        "tornado" : "jacket, hat, sweater",
+        ]
+    
+    var darkSkyData : WXKDarkSkyResponse?
   
     @IBOutlet weak var hourlyWeatherCollection: UICollectionView?
     
@@ -83,65 +117,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
                     // Handle the received data here...
                     
                     DispatchQueue.main.async {
-                        
-                        print ("Weather icon is \(data.currently?.icon)")
-                        print ("Current temperature is \(data.currently?.temperature)")
-                        
-                        self.temperatureLabel?.text = "\(self.celsius(fahrenheit: (data.currently!.temperature)!)) C"
-                        
-                        let iconImageNames = [
-                            "clear-day" : "sun",
-                            "clear-night" : "moon",
-                            "rain" : "cloud-rain",
-                            "snow" : "cloud-snow",
-                            "sleet" : "cloud-drizzle",
-                            "wind" : "wind",
-                            "fog" : "cloud-fog",
-                            "cloudy" : "cloud",
-                            "partly-cloudy-day" : "cloud-sun",
-                            "partly-cloudy-night" : "cloud-moon",
-                            "hail" : "cloud-hail",
-                            "thunderstorm" : "cloud-lightning",
-                            "tornado" : "tornado"
-                         ]
-                        
-                        let clothingLabelNames = [
-                            "clear-day" : "sun gear",
-                            "clear-night" : "jacket or sweater",
-                            "rain" : " rain gear",
-                            "snow" : "snow gear",
-                            "sleet" : "jacket, hat, gloves",
-                            "wind" : "wind breaker",
-                            "fog" : "jacket or sweater",
-                            "cloudy" : "jacket or sweater",
-                            "partly-cloudy-day" : "jacket or sweater",
-                            "partly-cloudy-night" : "jacket or sweater",
-                            "hail" : "rain gear",
-                            "thunderstorm" : "raincoat, rainboots",
-                            "tornado" : "jacket, hat, sweater",
-                         ]
-                        
-                        var curClothingLabel = clothingLabelNames[(data.currently?.icon)!]
-                        if ((curClothingLabel == nil) || (curClothingLabel?.isEmpty)!)   {
-                          curClothingLabel = "No suggestions to wear"
-                        }
-                        self.clothingLabel?.text = curClothingLabel
-                        
-                        var curWeatherIcon = iconImageNames[(data.currently?.icon)!]
-                        if (curWeatherIcon!.isEmpty) {
-                            curWeatherIcon = "cloud-download"
-                        }
-                        self.weatherIcon?.image = UIImage(named: curWeatherIcon!)
-                        
-                        let date = NSDate()
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
-                        self.dateLabel?.text = dateFormatter.string(from: date as Date)
-                        
-                        self.temperatureLabel?.textAlignment = .center
-                        self.dateLabel?.textAlignment = .center
-                        self.clothingLabel?.textAlignment = .center
-                      
+                        self.darkSkyData = data
+                        self.update()
                     }
 
                 }
@@ -149,19 +126,56 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
         }
     }
     
+    func update() {
+        self.temperatureLabel?.text = "\(self.celsius(fahrenheit: (self.darkSkyData?.currently!.temperature)!))°C"
+        
+        var curClothingLabel = self.clothingLabelNames[(self.darkSkyData?.currently?.icon)!]
+        if ((curClothingLabel == nil) || (curClothingLabel?.isEmpty)!)   {
+            curClothingLabel = "No suggestions to wear"
+        }
+        self.clothingLabel?.text = curClothingLabel
+        
+        var curWeatherIcon = self.iconImageNames[(self.darkSkyData?.currently?.icon)!]
+        if (curWeatherIcon!.isEmpty) {
+            curWeatherIcon = "cloud-download"
+        }
+        self.weatherIcon?.image = UIImage(named: curWeatherIcon!)
+        
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE, MMM dd"
+        self.dateLabel?.text = dateFormatter.string(from: date as Date)
+        
+        self.hourlyWeatherCollection?.reloadData()
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 24
+        return min(self.darkSkyData?.hourly?.data.count ?? 0, 24)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.hourlyWeatherCollection?.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HourlyWeatherViewControllerCollectionViewCell
-        cell.timeLabel?.text = String(indexPath.row + 1)
-        cell.weatherIcon?.image = UIImage(named: "cloud-download")
-        cell.temperatureLabel?.text = String(indexPath.row + 1)
+        
+        if (indexPath.row == 0) {
+            cell.timeLabel?.text = "Now"
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "h a"
+            
+            let date = self.darkSkyData?.hourly?.data[indexPath.row].time
+            cell.timeLabel?.text = dateFormatter.string(from: date!)
+        }
+        
+        var aWeatherIcon = self.iconImageNames[((self.darkSkyData?.hourly?.data[indexPath.row].icon)!)]
+        if (aWeatherIcon!.isEmpty) {
+            aWeatherIcon = "cloud-download"
+        }
+        cell.weatherIcon?.image = UIImage(named: aWeatherIcon!)
+        cell.temperatureLabel?.text = "\(self.celsius(fahrenheit: (self.darkSkyData?.hourly?.data[indexPath.row].temperature)!))°C"
         return cell
     }
     
