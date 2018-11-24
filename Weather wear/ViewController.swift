@@ -10,8 +10,10 @@ import UIKit
 import CoreLocation
 import WXKDarkSky
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate,  UICollectionViewDataSource  {
   
+    @IBOutlet weak var hourlyWeatherCollection: UICollectionView?
+    
     @IBOutlet weak var weatherIcon: UIImageView?
     
     @IBOutlet weak var temperatureLabel: UILabel?
@@ -41,6 +43,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             ViewController.locationManager.desiredAccuracy = kCLLocationAccuracyBest
 //            locationManager.startUpdatingLocation()
         }
+        
+        let cellNib = UINib(nibName: "HourlyWeatherViewControllerCollectionViewCell", bundle: nil)
+        self.hourlyWeatherCollection?.register(cellNib, forCellWithReuseIdentifier: "cell")
         
     }
     
@@ -142,6 +147,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 24
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.hourlyWeatherCollection?.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HourlyWeatherViewControllerCollectionViewCell
+        cell.timeLabel?.text = String(indexPath.row + 1)
+        cell.weatherIcon?.image = UIImage(named: "cloud-download")
+        cell.temperatureLabel?.text = String(indexPath.row + 1)
+        return cell
     }
     
 //    func lookUpCurrentLocation() {
