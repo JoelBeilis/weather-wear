@@ -93,16 +93,38 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyP-Qp-SUP" userLabel="celsiusToFahrenheitButton">
+                                <rect key="frame" x="235" y="80" width="70" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="gZn-yG-OAK"/>
+                                    <constraint firstAttribute="height" constant="50" id="vhJ-Em-g9y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="°C / °F">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="2"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tempMode" destination="BYZ-38-t0r" eventType="touchUpInside" id="pIT-6t-L2x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7rh-om-RcU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Crt-Fo-rRq"/>
+                            <constraint firstAttribute="trailing" secondItem="NyP-Qp-SUP" secondAttribute="trailing" constant="15" id="Q4b-Mq-eyH"/>
                             <constraint firstItem="7rh-om-RcU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WOe-sj-2sD"/>
                             <constraint firstItem="w0n-Fh-1HI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YH9-lT-uHP"/>
                             <constraint firstItem="w0n-Fh-1HI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bM1-xJ-OI8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7rh-om-RcU" secondAttribute="trailing" id="dGi-8x-y1P"/>
                             <constraint firstAttribute="bottom" secondItem="w0n-Fh-1HI" secondAttribute="bottom" id="mDe-72-Kv2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7rh-om-RcU" secondAttribute="bottom" id="y7Z-ug-q5K"/>
+                            <constraint firstItem="NyP-Qp-SUP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="80" id="zb1-Ll-4Js"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

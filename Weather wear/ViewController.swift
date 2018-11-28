@@ -45,23 +45,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
     ]
     
     let clothingLabelNames = [
-        "clear-day" : "sun gear",
-        "clear-night" : "jacket or sweater",
-        "rain" : " rain gear",
-        "snow" : "snow gear",
-        "sleet" : "jacket, hat, gloves",
-        "wind" : "wind breaker",
-        "fog" : "jacket or sweater",
-        "cloudy" : "jacket or sweater",
-        "partly-cloudy-day" : "jacket or sweater",
-        "partly-cloudy-night" : "jacket or sweater",
-        "hail" : "rain gear",
-        "thunderstorm" : "raincoat, rainboots",
-        "tornado" : "jacket, hat, sweater",
+        "clear-day" : "Sun gear",
+        "clear-night" : "Jacket or sweater",
+        "rain" : " Rain gear",
+        "snow" : "Snow gear",
+        "sleet" : "Jacket, hat, gloves",
+        "wind" : "Wind breaker",
+        "fog" : "Jacket or sweater",
+        "cloudy" : "Jacket or sweater",
+        "partly-cloudy-day" : "Jacket or sweater",
+        "partly-cloudy-night" : "Jacket or sweater",
+        "hail" : "Rain gear",
+        "thunderstorm" : "Raincoat, rainboots",
+        "tornado" : "Jacket, hat, sweater",
         ]
     
     var darkSkyData : WXKDarkSkyResponse?
-  
+    
+    var isCelcius : Bool = true
+    
     @IBOutlet weak var hourlyWeatherCollection: UICollectionView?
     
     @IBOutlet weak var iconNameLabel: UILabel?
@@ -79,6 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +102,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
         let cellNib = UINib(nibName: "HourlyWeatherViewControllerCollectionViewCell", bundle: nil)
         self.hourlyWeatherCollection?.register(cellNib, forCellWithReuseIdentifier: "cell")
         
+        self.isCelcius = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +122,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
     
     func kph(mph: Float) -> Float {
         return mph * 1.609344
+    }
+    //if celsiusToFahrenheitButton pushed switch celsius to fahrenheit{
+   
+    //}
+    //else if celsiusToFahrenheitButton pushed switch fahrenheit to celsius{
+    
+    //}
+    
+    @IBAction func tempMode() {
+        self.isCelcius = !self.isCelcius
+        self.update()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
@@ -144,8 +160,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
         }
     }
     
+    func getTemp(farenheitTemp : Double) -> String {
+        return (self.isCelcius) ?
+            "\(Int(self.celsius(fahrenheit: farenheitTemp)))°C" :
+            "\(Int(floor(farenheitTemp)))°F"
+    }
+    
     func update() {
-        self.temperatureLabel?.text = "\(self.celsius(fahrenheit: (self.darkSkyData?.currently!.temperature)!))°C"
+        self.temperatureLabel?.text = self.getTemp(farenheitTemp: (self.darkSkyData?.currently!.temperature)!)
         
         var curClothingLabel = self.clothingLabelNames[(self.darkSkyData?.currently?.icon)!]
         if ((curClothingLabel == nil) || (curClothingLabel?.isEmpty)!)   {
@@ -192,7 +214,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
             aWeatherIcon = "cloud-download"
         }
         cell.weatherIcon?.image = UIImage(named: aWeatherIcon!)
-        cell.temperatureLabel?.text = "\(self.celsius(fahrenheit: (self.darkSkyData?.hourly?.data[indexPath.row].temperature)!))°C"
+        cell.temperatureLabel?.text = self.getTemp(farenheitTemp: (self.darkSkyData?.hourly?.data[indexPath.row].temperature)!)
         return cell
     }
     
