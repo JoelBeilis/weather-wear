@@ -15,6 +15,7 @@
 		5D883DC92158495C005140A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D883DC82158495C005140A8 /* Assets.xcassets */; };
 		5D883DCC2158495C005140A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D883DCA2158495C005140A8 /* LaunchScreen.storyboard */; };
 		5D883DD5215B0D03005140A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D883DD4215B0D03005140A8 /* CoreLocation.framework */; };
+		5D95F65F21D6AF2300B436FB /* Loading gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5D95F65E21D6AF2300B436FB /* Loading gif.gif */; };
 		69BD2BF251020A1846269B91 /* Pods_Weather_wear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E2DC4CD2322AA6500FAEA2 /* Pods_Weather_wear.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		5D883DCB2158495C005140A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D883DCD2158495C005140A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D883DD4215B0D03005140A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5D95F65E21D6AF2300B436FB /* Loading gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "Loading gif.gif"; path = "../../../Desktop/Loading gif.gif"; sourceTree = "<group>"; };
 		C82342E7CF0CA7105146D89A /* Pods-Weather wear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather wear.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather wear/Pods-Weather wear.release.xcconfig"; sourceTree = "<group>"; };
 		CB078CC91464540A45C5DC85 /* Pods-Weather wear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather wear.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather wear/Pods-Weather wear.debug.xcconfig"; sourceTree = "<group>"; };
 		F8E2DC4CD2322AA6500FAEA2 /* Pods_Weather_wear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_wear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 				5D883DC82158495C005140A8 /* Assets.xcassets */,
 				5D883DCA2158495C005140A8 /* LaunchScreen.storyboard */,
 				5D883DCD2158495C005140A8 /* Info.plist */,
+				5D95F65E21D6AF2300B436FB /* Loading gif.gif */,
 			);
 			path = "Weather wear";
 			sourceTree = "<group>";
@@ -134,7 +137,7 @@
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D883DCC2158495C005140A8 /* LaunchScreen.storyboard in Resources */,
+				5D95F65F21D6AF2300B436FB /* Loading gif.gif in Resources */,
 				5D883DC92158495C005140A8 /* Assets.xcassets in Resources */,
 				5D883DC72158495A005140A8 /* Main.storyboard in Resources */,
 				5D5E3FA921A7A1AC00767DB8 /* HourlyWeatherViewControllerCollectionViewCell.xib in Resources */,
@@ -182,12 +186,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Weather wear/Pods-Weather wear-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/WXKDarkSky/WXKDarkSky.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WXKDarkSky.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,7 +382,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JCY6MJF6H2;
 				INFOPLIST_FILE = "Weather wear/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,7 +402,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JCY6MJF6H2;
 				INFOPLIST_FILE = "Weather wear/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

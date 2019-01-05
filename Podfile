@@ -7,5 +7,6 @@ target 'Weather wear' do
 
   # Pods for Weather wear
   pod 'WXKDarkSky', '~> 2.2.0'
+  pod 'NVActivityIndicatorView'
 
 end

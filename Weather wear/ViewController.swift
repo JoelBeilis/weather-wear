@@ -66,6 +66,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
     
     @IBOutlet weak var hourlyWeatherCollection: UICollectionView?
     
+    @IBOutlet weak var celsiusToFahrenheitButton: UIButton?
+    
+    @IBOutlet weak var weatherWearLabel: UILabel?
+    
     @IBOutlet weak var iconNameLabel: UILabel?
     
     @IBOutlet weak var weatherIcon: UIImageView?
@@ -92,6 +96,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
         
         // For use when the app is open
         ViewController.locationManager.requestWhenInUseAuthorization()
+    
         
         if CLLocationManager.locationServicesEnabled() {
             ViewController.locationManager.delegate = self
@@ -142,7 +147,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
             ViewController.locationManager.stopUpdatingLocation()
             
             let request = WXKDarkSkyRequest(key: "cf0cf207553849cd5fa3a58e88d4d17e")
-            let point = WXKDarkSkyRequest.Point(location.coordinate.latitude, location.coordinate.longitude)
+            // Location services are available, so query the user’s location.
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            
+//                    // Cupertino - Apple's office
+//                    let latitude = 37.3229978
+//                    let longitude = -122.0321823
+            
+
+            let point = WXKDarkSkyRequest.Point(latitude, longitude)
             
             request.loadData(point: point) { (data, error) in
                 if let error = error {
@@ -167,6 +181,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
     }
     
     func update() {
+        
+        self.weatherWearLabel?.text = ""
+        self.celsiusToFahrenheitButton?.setTitle("°C / °F", for:[])
+        
         self.temperatureLabel?.text = self.getTemp(farenheitTemp: (self.darkSkyData?.currently!.temperature)!)
         
         var curClothingLabel = self.clothingLabelNames[(self.darkSkyData?.currently?.icon)!]
