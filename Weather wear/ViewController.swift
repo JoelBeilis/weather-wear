@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import WXKDarkSky
 
-class ViewController: UIViewController, CLLocationManagerDelegate,  UICollectionViewDataSource  {
+class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionViewDataSource {
     
     let iconImageNames = [
         "clear-day" : "sun",
@@ -82,42 +82,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
 
     static let locationManager = CLLocationManager()
     
+    static var me : ViewController? = nil
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    
+        // Do any additiona setup after loading the view, typically from a nib.
+        
+        ViewController.me = self
+        
         // For use when the app is open & in the background
-        ViewController.locationManager.requestAlwaysAuthorization()
+        //ViewController.locationManager.requestAlwaysAuthorization()
         
         // For use when the app is open
         ViewController.locationManager.requestWhenInUseAuthorization()
     
-        
         if CLLocationManager.locationServicesEnabled() {
             ViewController.locationManager.delegate = self
             ViewController.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//            locationManager.startUpdatingLocation()
         }
         
         let cellNib = UINib(nibName: "HourlyWeatherViewControllerCollectionViewCell", bundle: nil)
         self.hourlyWeatherCollection?.register(cellNib, forCellWithReuseIdentifier: "cell")
         
         self.isCelcius = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // ViewController.refresh()
+        ViewController.refresh()
     }
     
     static func refresh() {
-        if CLLocationManager.locationServicesEnabled() {
+        if (CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() != CLAuthorizationStatus.denied) {
+            ViewController.locationManager.stopUpdatingLocation()
             ViewController.locationManager.startUpdatingLocation()
+        } else {
+            ViewController.me?.showLocationDisabledPopUp()
         }
     }
     
@@ -128,38 +131,50 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
     func kph(mph: Float) -> Float {
         return mph * 1.609344
     }
-    //if celsiusToFahrenheitButton pushed switch celsius to fahrenheit{
-   
-    //}
-    //else if celsiusToFahrenheitButton pushed switch fahrenheit to celsius{
-    
-    //}
     
     @IBAction func tempMode() {
         self.isCelcius = !self.isCelcius
         self.update()
     }
     
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print ("Weather wear: didChangeAuthorization - \(status.rawValue)")
+        if (status == CLAuthorizationStatus.denied) {
+            showLocationDisabledPopUp()
+        }
+    }
+    
+    func showLocationDisabledPopUp() {
+        let alertController = UIAlertController(title: "Background Location Access Disabled", message: "In order to tell you the weather we need your location", preferredStyle: .alert)
+        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+        
+        let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+            if let url = URL(string: UIApplication.openSettingsURLString){
+                UIApplication.shared .open(url,options: [:] , completionHandler: nil )
+            }
+        }
+        
+        alertController.addAction(openAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let location = locations.first {
             print(location.coordinate)
-            
+    
             ViewController.locationManager.stopUpdatingLocation()
             
             let request = WXKDarkSkyRequest(key: "cf0cf207553849cd5fa3a58e88d4d17e")
             // Location services are available, so query the user’s location.
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
-            
-//                    // Cupertino - Apple's office
-//                    let latitude = 37.3229978
-//                    let longitude = -122.0321823
-            
-
+    
             let point = WXKDarkSkyRequest.Point(latitude, longitude)
             
             request.loadData(point: point) { (data, error) in
-                if let error = error {
+                if error != nil {
                     // Handle errors here...
                 } else if let data = data {
                     // Handle the received data here...
@@ -253,7 +268,4 @@ class ViewController: UIViewController, CLLocationManagerDelegate,  UICollection
 //        
 //    }
 
-}
-
-
-
+   }
