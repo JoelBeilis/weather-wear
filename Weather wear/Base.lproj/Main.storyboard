@@ -31,7 +31,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <state key="normal" title="Select Location"/>
                                         <connections>
-                                            <segue destination="isV-ws-H7W" kind="show" id="Szg-rX-rvP"/>
+                                            <action selector="launchLocationPicker" destination="BYZ-38-t0r" eventType="touchUpInside" id="kyx-iz-KM5"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FAw-KT-WpN">
@@ -154,35 +154,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1112" y="43"/>
-        </scene>
-        <!--Select your location-->
-        <scene sceneID="oNv-Nd-zaw">
-            <objects>
-                <tableViewController id="isV-ws-H7W" customClass="LocationPickerViewController" customModule="Weather_wear" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CAH-6N-RFk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="kHs-WI-9Rt" customClass="TableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kHs-WI-9Rt" id="UGD-2J-Y1T" customClass="UITableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="isV-ws-H7W" id="88h-Sg-9Jx"/>
-                            <outlet property="delegate" destination="isV-ws-H7W" id="TPo-dt-Ken"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Select your location" id="f3B-bg-2Bz"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c5C-By-R9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="42.857142857142854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GlT-Jt-4KA">

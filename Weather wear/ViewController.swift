@@ -10,7 +10,8 @@ import UIKit
 import CoreLocation
 import WXKDarkSky
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionViewDataSource, LocationPickerDelegate {
+    
     
     let iconImageNames = [
         "clear-day" : "sun",
@@ -254,6 +255,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
         cell.weatherIcon?.image = UIImage(named: aWeatherIcon!)
         cell.temperatureLabel?.text = self.getTemp(farenheitTemp: (self.darkSkyData?.hourly?.data[indexPath.row].temperature)!)
         return cell
+    }
+    
+    // LocationPickerDelegate functions
+    
+    @IBAction func launchLocationPicker() {
+        let locationPicker : LocationPickerViewController = LocationPickerViewController()
+        locationPicker.delegate = self;
+        self.navigationController?.show(locationPicker, sender: self)
+    }
+    
+    func updateCity(_: [String : NSObject]) {
+        // TODO update code to set city data here
     }
     
 //    func lookUpCurrentLocation() {

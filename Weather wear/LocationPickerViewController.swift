@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LocationPickerDelegate {
+    func updateCity(_ : [String:NSObject])
+}
+
 class LocationPickerViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -15,10 +19,14 @@ class LocationPickerViewController: UITableViewController, UISearchBarDelegate, 
     var locations : Array<[String:NSObject]> = []
     var filteredLocations : Array<[String:NSObject]> = []
     
+    var delegate : LocationPickerDelegate? = nil
+    
 //    var locations : Array<[String:String]>
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         locations = getDataForCity()
         filteredLocations = locations
@@ -83,6 +91,13 @@ class LocationPickerViewController: UITableViewController, UISearchBarDelegate, 
         let cell = self.tableView.cellForRow(at: indexPath)
         let city = cell?.textLabel?.text
         print ("Selected city : " + city!)
+        
+        // TODO: find cityData in locations by city
+        let cityData = ["" : ""]
+        
+        // Update city in View Controller
+        self.delegate?.updateCity(cityData as [String : NSObject])
+        
         self.navigationController?.popViewController(animated: true)
     }
     /*
