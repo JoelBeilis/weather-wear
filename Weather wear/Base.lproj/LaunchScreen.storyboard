@@ -12,19 +12,11 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="SMW-X6-gS1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="812" id="EXZ-g0-aBW"/>
-                                    <constraint firstAttribute="width" constant="375" id="qyy-wL-BMW"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Wear" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDL-Lg-SLn">
                                 <rect key="frame" x="76" y="424" width="262" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
@@ -35,31 +27,21 @@
                                 <rect key="frame" x="76" y="570" width="262" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SMW-X6-gS1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-20" id="2s5-sy-d1A"/>
-                            <constraint firstItem="SMW-X6-gS1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-16" id="4L2-Kc-KgY"/>
                             <constraint firstItem="JTw-tY-uTY" firstAttribute="leading" secondItem="hDL-Lg-SLn" secondAttribute="leading" id="6ZU-Cu-Nlg"/>
                             <constraint firstItem="JTw-tY-uTY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CsF-mT-o7A"/>
                             <constraint firstItem="hDL-Lg-SLn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Jmf-6P-Qrb"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="SMW-X6-gS1" secondAttribute="bottom" id="RYJ-aP-isf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SMW-X6-gS1" secondAttribute="trailing" constant="-16" id="Rrf-vb-vQ0"/>
                             <constraint firstItem="JTw-tY-uTY" firstAttribute="top" secondItem="hDL-Lg-SLn" secondAttribute="bottom" constant="98" id="SXo-r5-Hy0"/>
-                            <constraint firstItem="SMW-X6-gS1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="aNQ-ft-HH5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JTw-tY-uTY" secondAttribute="bottom" constant="164" id="gC9-0j-FFt"/>
-                            <constraint firstAttribute="bottom" secondItem="SMW-X6-gS1" secondAttribute="bottom" id="j6L-sN-LgK"/>
-                            <constraint firstItem="SMW-X6-gS1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="quu-fw-gqI"/>
                             <constraint firstItem="hDL-Lg-SLn" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uOw-d1-vXL"/>
-                            <constraint firstAttribute="trailing" secondItem="SMW-X6-gS1" secondAttribute="trailing" id="yq5-2T-s0e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Background" width="667" height="621.5"/>
-    </resources>
 </document>

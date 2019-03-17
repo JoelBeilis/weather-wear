@@ -1,10 +1,10 @@
-//
-//  ViewController.swift
-//  Weather wear
-//
-//  Created by Joel Beilis on 2018-09-23.
-//  Copyright © 2018 Joel Beilis. All rights reserved.
-//
+/*
+  ViewController.swift
+  Weather wear
+
+  Created by Joel Beilis on 2018--23.
+  Copyright © 2018 Joel Beilis. All rights reserved.
+*/
 
 import UIKit
 import CoreLocation
@@ -79,7 +79,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     @IBOutlet weak var dateLabel: UILabel?
     
     @IBOutlet weak var clothingLabel: UILabel?
-
+    
+    @IBAction func cityLocation() {
+        
+    }
+    
     static let locationManager = CLLocationManager()
     
     static var me : ViewController? = nil
@@ -94,6 +98,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
         
         ViewController.me = self
         
+    
         // For use when the app is open & in the background
         //ViewController.locationManager.requestAlwaysAuthorization()
         
