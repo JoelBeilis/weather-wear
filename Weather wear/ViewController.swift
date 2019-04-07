@@ -77,6 +77,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     
     @IBOutlet weak var temperatureLabel: UILabel?
     
+    @IBOutlet weak var locationButton: UIButton!
+    
     @IBOutlet weak var dateLabel: UILabel?
     
     @IBOutlet weak var clothingLabel: UILabel?
@@ -171,26 +173,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
             print(location.coordinate)
     
             ViewController.locationManager.stopUpdatingLocation()
-            
-            let request = WXKDarkSkyRequest(key: "cf0cf207553849cd5fa3a58e88d4d17e")
             // Location services are available, so query the user’s location.
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
-    
-            let point = WXKDarkSkyRequest.Point(latitude, longitude)
-            
-            request.loadData(point: point) { (data, error) in
-                if error != nil {
-                    // Handle errors here...
-                } else if let data = data {
-                    // Handle the received data here...
-                    
-                    DispatchQueue.main.async {
-                        self.darkSkyData = data
-                        self.update()
-                    }
 
+            retrieveWeatherAndUpdate(latitude : latitude, longitude : longitude)
+        }
+    }
+    
+    func retrieveWeatherAndUpdate(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let request = WXKDarkSkyRequest(key: "cf0cf207553849cd5fa3a58e88d4d17e")
+        let point = WXKDarkSkyRequest.Point(latitude, longitude)
+        
+        request.loadData(point: point) { (data, error) in
+            if error != nil {
+                // Handle errors here...
+            } else if let data = data {
+                // Handle the received data here...
+                
+                DispatchQueue.main.async {
+                    self.darkSkyData = data
+                    self.update()
                 }
+                
             }
         }
     }
@@ -202,7 +207,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     }
     
     func update() {
-        
         self.weatherWearLabel?.text = ""
         self.celsiusToFahrenheitButton?.setTitle("°C / °F", for:[])
         
@@ -265,16 +269,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
         self.navigationController?.show(locationPicker, sender: self)
     }
     
-    func updateCity(_: [String : NSObject]) {
-        // TODO update code to set city data here
+    func updateCity( _ cityData: [String : NSObject]) {
+        let city = cityData["city"] as! String?
+//        let country = cityData["iso2"] as! String?
+//        let state = cityData["State"] as! String?
+        self.locationButton.titleLabel?.text = city
+//        self.textLabel.text = "Clicked location"
+        let latitude = (cityData["lat"] as! Double?)!
+        let longitude = (cityData["lng"] as! Double?)!
+        retrieveWeatherAndUpdate(latitude : latitude, longitude : longitude)
+        return
     }
     
 //    func lookUpCurrentLocation() {
-//        // Use the last reported location.
-//        if let lastLocation = self.locationManager.location {
+//       Use the last reported location.let city = cell?.textLabel?.text        if let lastLocation = self.locationManager.location {
 //            let geocoder = CLGeocoder()
-//            
-//            // Look up the location and pass it to the completion handler
+//
+//             Look up the location and pass it to the completion handler
 //            geocoder.reverseGeocodeLocation(lastLocation,
 //                                            completionHandler: { (placemarks, error) in
 //                                                if error == nil {
@@ -283,7 +294,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
 //                                                }
 //            })
 //        }
-//        
+//
 //    }
 
    }

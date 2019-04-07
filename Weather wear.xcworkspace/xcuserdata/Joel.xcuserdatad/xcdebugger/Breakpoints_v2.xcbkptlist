@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/AppDelegate.swift"
-            timestampString = "574536526.949502"
+            timestampString = "576349349.013091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/AppDelegate.swift"
-            timestampString = "574536526.94959"
+            timestampString = "576349349.013185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/LocationPickerViewController.swift"
-            timestampString = "574536526.949662"
+            timestampString = "576349349.0132509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "getSwiftArrayFromPlist(name:)"
             landmarkType = "7">
             <Locations>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/LocationPickerViewController.swift"
-            timestampString = "574536526.949736"
+            timestampString = "576349349.013311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -106,13 +106,109 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/LocationPickerViewController.swift"
-            timestampString = "574536526.949807"
+            timestampString = "576349349.01341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Weather wear/ViewController.swift"
+            timestampString = "576349349.013472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "updateCity(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Weather wear/ViewController.swift"
+            timestampString = "576349349.014016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "updateCity(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Weather wear/ViewController.swift"
+            timestampString = "576349349.01438"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "retrieveWeatherAndUpdate(latitude:longitude:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Weather wear/ViewController.swift"
+            timestampString = "576349349.0147589"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "retrieveWeatherAndUpdate(latitude:longitude:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;WXKDarkSky.WXKDarkSkyResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Weather_wear.ViewController.retrieveWeatherAndUpdate(latitude: Swift.Double, longitude: Swift.Double) -&gt; ()"
+                  moduleName = "Weather wear"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Joel/Projects/weather-wear/Weather%20wear/ViewController.swift"
+                  timestampString = "576349349.446311"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "440">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;WXKDarkSky.WXKDarkSkyResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Weather_wear.ViewController.retrieveWeatherAndUpdate(latitude: Swift.Double, longitude: Swift.Double) -&gt; ()"
+                  moduleName = "Weather wear"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Joel/Projects/weather-wear/Weather%20wear/ViewController.swift"
+                  timestampString = "576349349.449205"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "448">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

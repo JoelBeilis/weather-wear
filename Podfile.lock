@@ -1,12 +1,12 @@
 PODS:
-  - NVActivityIndicatorView (4.4.0):
-    - NVActivityIndicatorView/Presenter (= 4.4.0)
-  - NVActivityIndicatorView/Presenter (4.4.0)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
   - WXKDarkSky (2.2.0)
 
 DEPENDENCIES:
   - NVActivityIndicatorView
-  - WXKDarkSky (~> 2.2.0)
+  - WXKDarkSky
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -14,9 +14,9 @@ SPEC REPOS:
     - WXKDarkSky
 
 SPEC CHECKSUMS:
-  NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   WXKDarkSky: d532c1fc3b3071fd7136c1ae3c78dc23e50a78f9
 
-PODFILE CHECKSUM: 3123b37c04f63a8f7bcebef935313e6d92959800
+PODFILE CHECKSUM: 05fb053ce45ace51b3d193e179f6ac9665e7c683
 
 COCOAPODS: 1.5.3

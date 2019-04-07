@@ -6,7 +6,7 @@ target 'Weather wear' do
   use_frameworks!
 
   # Pods for Weather wear
-  pod 'WXKDarkSky', '~> 2.2.0'
+  pod 'WXKDarkSky'
   pod 'NVActivityIndicatorView'
 
 end

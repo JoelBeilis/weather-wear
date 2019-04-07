@@ -92,10 +92,9 @@ class LocationPickerViewController: UITableViewController, UISearchBarDelegate, 
         let city = cell?.textLabel?.text
         print ("Selected city : " + city!)
         
-        // TODO: find cityData in locations by city
-        let cityData = ["" : ""]
-        
         // Update city in View Controller
+        let row = indexPath.row
+        let cityData = filteredLocations[row]
         self.delegate?.updateCity(cityData as [String : NSObject])
         
         self.navigationController?.popViewController(animated: true)
