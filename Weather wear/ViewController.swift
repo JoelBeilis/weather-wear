@@ -91,6 +91,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     
     static var me : ViewController? = nil
     
+    var location : CLLocation? = nil
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -169,13 +171,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        if let location = locations.first {
-            print(location.coordinate)
+        if (self.location == nil) {
+            self.location = locations.first!
+            print(self.location!.coordinate)
     
             ViewController.locationManager.stopUpdatingLocation()
             // Location services are available, so query the user’s location.
-            let latitude = location.coordinate.latitude
-            let longitude = location.coordinate.longitude
+            let latitude = location!.coordinate.latitude
+            let longitude = location!.coordinate.longitude
 
             retrieveWeatherAndUpdate(latitude : latitude, longitude : longitude)
         }
@@ -184,7 +187,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     func retrieveWeatherAndUpdate(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let request = WXKDarkSkyRequest(key: "cf0cf207553849cd5fa3a58e88d4d17e")
         let point = WXKDarkSkyRequest.Point(latitude, longitude)
-        
+        print("@@@@@ retrieveWeatherAndUpdate: ", latitude , longitude)
         request.loadData(point: point) { (data, error) in
             if error != nil {
                 // Handle errors here...
