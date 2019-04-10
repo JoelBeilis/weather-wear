@@ -97,6 +97,8 @@ class LocationPickerViewController: UITableViewController, UISearchBarDelegate, 
         let cityData = filteredLocations[row]
         self.delegate?.updateCity(cityData as [String : NSObject])
         
+        self.searchController.dismiss(animated: true)
+        
         self.navigationController?.popViewController(animated: true)
     }
     /*

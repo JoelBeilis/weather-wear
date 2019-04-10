@@ -46,19 +46,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     ]
     
     let clothingLabelNames = [
-        "clear-day" : "Sun gear",
-        "clear-night" : "Jacket or sweater",
-        "rain" : " Rain gear",
-        "snow" : "Snow gear",
-        "sleet" : "Jacket, hat, gloves",
+        "clear-day" : "Sunscreen, Hat, Sunglasses ",
+        "clear-night" : "Jacket or Sweater",
+        "rain" : " Raincoat, Rainboots",
+        "snow" : "Jacket, Hat, Gloves",
+        "sleet" : "Jacket, Hat, Gloves",
         "wind" : "Wind breaker",
-        "fog" : "Jacket or sweater",
-        "cloudy" : "Jacket or sweater",
-        "partly-cloudy-day" : "Jacket or sweater",
-        "partly-cloudy-night" : "Jacket or sweater",
-        "hail" : "Rain gear",
-        "thunderstorm" : "Raincoat, rainboots",
-        "tornado" : "Jacket, hat, sweater",
+        "fog" : "Jacket or Sweater",
+        "cloudy" : "Jacket or Sweater",
+        "partly-cloudy-day" : "Jacket or Sweater",
+        "partly-cloudy-night" : "Jacket or Sweater",
+        "hail" : "Jacket, Hat, Gloves",
+        "thunderstorm" : "Raincoat, Rainboots",
+        "tornado" : "Jacket, Hat, Sweater",
         ]
     
     var darkSkyData : WXKDarkSkyResponse?
@@ -79,13 +79,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     
     @IBOutlet weak var locationButton: UIButton!
     
+    @IBOutlet weak var locationLabel: UILabel!
+    
     @IBOutlet weak var dateLabel: UILabel?
     
     @IBOutlet weak var clothingLabel: UILabel?
-    
-    @IBAction func cityLocation() {
-        
-    }
     
     static let locationManager = CLLocationManager()
     
@@ -179,6 +177,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
             // Location services are available, so query the user’s location.
             let latitude = location!.coordinate.latitude
             let longitude = location!.coordinate.longitude
+            
+            self.lookUpCurrentLocation()
 
             retrieveWeatherAndUpdate(latitude : latitude, longitude : longitude)
         }
@@ -276,28 +276,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
         let city = cityData["city"] as! String?
 //        let country = cityData["iso2"] as! String?
 //        let state = cityData["State"] as! String?
-        self.locationButton.titleLabel?.text = city
-//        self.textLabel.text = "Clicked location"
+        // self.locationButton.titleLabel?.text = city
+        self.locationLabel.text = city
         let latitude = (cityData["lat"] as! Double?)!
         let longitude = (cityData["lng"] as! Double?)!
         retrieveWeatherAndUpdate(latitude : latitude, longitude : longitude)
         return
     }
     
-//    func lookUpCurrentLocation() {
-//       Use the last reported location.let city = cell?.textLabel?.text        if let lastLocation = self.locationManager.location {
-//            let geocoder = CLGeocoder()
-//
-//             Look up the location and pass it to the completion handler
-//            geocoder.reverseGeocodeLocation(lastLocation,
-//                                            completionHandler: { (placemarks, error) in
-//                                                if error == nil {
-//                                                    let firstLocation = placemarks?[0]
-//                                                    print(firstLocation?.country)
-//                                                }
-//            })
-//        }
-//
-//    }
+    func lookUpCurrentLocation() {
+        if let lastLocation = ViewController.locationManager.location {
+            let geocoder = CLGeocoder()
 
-   }
+            //Look up the location and pass it to the completion handler
+            geocoder.reverseGeocodeLocation(lastLocation,
+                                            completionHandler: {
+                                                (placemarks, error) in if error == nil {
+                                                    let firstLocation = placemarks?[0]
+                                                    let city = firstLocation?.locality
+                                                    self.locationLabel.text = city
+                                                }
+                                                
+            })
+        }
+    }
+
+}
