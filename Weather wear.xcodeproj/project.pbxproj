@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D2EA6682239BEBD00F2EB64 /* worldcities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D2EA6672239BEBD00F2EB64 /* worldcities.plist */; };
 		5D5E3FA821A7A1AC00767DB8 /* HourlyWeatherViewControllerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5E3FA621A7A1AB00767DB8 /* HourlyWeatherViewControllerCollectionViewCell.swift */; };
 		5D5E3FA921A7A1AC00767DB8 /* HourlyWeatherViewControllerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D5E3FA721A7A1AB00767DB8 /* HourlyWeatherViewControllerCollectionViewCell.xib */; };
 		5D883DC22158495A005140A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D883DC12158495A005140A8 /* AppDelegate.swift */; };
@@ -16,12 +15,12 @@
 		5D883DC92158495C005140A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D883DC82158495C005140A8 /* Assets.xcassets */; };
 		5D883DCC2158495C005140A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D883DCA2158495C005140A8 /* LaunchScreen.storyboard */; };
 		5D883DD5215B0D03005140A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D883DD4215B0D03005140A8 /* CoreLocation.framework */; };
+		5D94427C22E69FE0005AEEA0 /* worldcities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D94427B22E69FE0005AEEA0 /* worldcities.plist */; };
 		5DCAEEB02235FD5A002959D8 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAEEAF2235FD5A002959D8 /* LocationPickerViewController.swift */; };
 		69BD2BF251020A1846269B91 /* Pods_Weather_wear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E2DC4CD2322AA6500FAEA2 /* Pods_Weather_wear.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D2EA6672239BEBD00F2EB64 /* worldcities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = worldcities.plist; path = ../../../Desktop/worldcities.plist; sourceTree = "<group>"; };
 		5D5E3FA621A7A1AB00767DB8 /* HourlyWeatherViewControllerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherViewControllerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5D5E3FA721A7A1AB00767DB8 /* HourlyWeatherViewControllerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyWeatherViewControllerCollectionViewCell.xib; sourceTree = "<group>"; };
 		5D883DBE21584959005140A8 /* Weather wear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather wear.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +31,7 @@
 		5D883DCB2158495C005140A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D883DCD2158495C005140A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D883DD4215B0D03005140A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5D94427B22E69FE0005AEEA0 /* worldcities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = worldcities.plist; sourceTree = "<group>"; };
 		5DC2BDAE223EA20300EB0E5A /* Weather wear.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Weather wear.entitlements"; sourceTree = "<group>"; };
 		5DCAEEAF2235FD5A002959D8 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		C82342E7CF0CA7105146D89A /* Pods-Weather wear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather wear.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather wear/Pods-Weather wear.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 				5D883DCA2158495C005140A8 /* LaunchScreen.storyboard */,
 				5DC2BDAE223EA20300EB0E5A /* Weather wear.entitlements */,
 				5D883DCD2158495C005140A8 /* Info.plist */,
-				5D2EA6672239BEBD00F2EB64 /* worldcities.plist */,
+				5D94427B22E69FE0005AEEA0 /* worldcities.plist */,
 			);
 			path = "Weather wear";
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 			files = (
 				5D883DCC2158495C005140A8 /* LaunchScreen.storyboard in Resources */,
 				5D883DC92158495C005140A8 /* Assets.xcassets in Resources */,
-				5D2EA6682239BEBD00F2EB64 /* worldcities.plist in Resources */,
+				5D94427C22E69FE0005AEEA0 /* worldcities.plist in Resources */,
 				5D883DC72158495A005140A8 /* Main.storyboard in Resources */,
 				5D5E3FA921A7A1AC00767DB8 /* HourlyWeatherViewControllerCollectionViewCell.xib in Resources */,
 			);
