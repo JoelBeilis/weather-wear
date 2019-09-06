@@ -24,10 +24,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.24313725489999999" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hDL-Lg-SLn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Jmf-6P-Qrb"/>
-                            <constraint firstItem="hDL-Lg-SLn" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uOw-d1-vXL"/>
+                            <constraint firstItem="hDL-Lg-SLn" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="R61-15-btt"/>
+                            <constraint firstItem="hDL-Lg-SLn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="bCX-AZ-DAC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

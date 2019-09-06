@@ -277,8 +277,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UICollectionV
     
     func updateCity( _ cityData: [String : NSObject]) {
         let city = cityData["city"] as! String?
-//        let country = cityData["iso2"] as! String?
-//        let state = cityData["State"] as! String?
+        //let country = cityData["iso2"] as! String?
+        //let state = cityData["State"] as! String?
         // self.locationButton.titleLabel?.text = city
         self.locationLabel.text = city
         let latitude = (cityData["lat"] as! Double?)!
