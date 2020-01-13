@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/AppDelegate.swift"
-            timestampString = "589133358.1763279"
+            timestampString = "589593157.174311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "applicationDidBecomeActive(_:)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "applicationWillTerminate(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/AppDelegate.swift"
-            timestampString = "589133358.176502"
+            timestampString = "589593157.174458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "applicationWillEnterForeground(_:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "applicationDidBecomeActive(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -118,11 +118,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/ViewController.swift"
-            timestampString = "589133358.176658"
+            timestampString = "589593157.17462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "287"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather wear/ViewController.swift"
-            timestampString = "589133358.176736"
+            timestampString = "589593157.174701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
@@ -154,7 +154,7 @@
                   moduleName = "Weather wear"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joel/Projects/Apps/weather-wear/Weather%20wear/ViewController.swift"
-                  timestampString = "589133358.4863501"
+                  timestampString = "592532322.6852601"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "164"
@@ -169,7 +169,7 @@
                   moduleName = "Weather wear"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joel/Projects/Apps/weather-wear/Weather%20wear/ViewController.swift"
-                  timestampString = "589133358.490134"
+                  timestampString = "592532322.691386"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "165"
